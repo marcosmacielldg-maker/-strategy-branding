@@ -74,3 +74,25 @@ export const sendToWebhook = async (url: string, data: any) => {
         // Silent fail for webhook if email sent? Or should we log it.
     }
 };
+
+/**
+ * Sends data specifically to a Google Apps Script Webhook.
+ * Uses no-cors and text/plain to avoid CORS preflight issues.
+ */
+export const sendToGoogleSheets = async (url: string, data: any) => {
+    if (!url) return;
+
+    try {
+        await fetch(url, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain",
+            },
+            body: JSON.stringify(data)
+        });
+        // With no-cors, response is opaque, we can't read status, so we assume it was sent.
+    } catch (error) {
+        console.error("Google Sheets Webhook error:", error);
+    }
+};

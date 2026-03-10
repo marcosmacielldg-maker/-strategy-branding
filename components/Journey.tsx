@@ -98,26 +98,20 @@ const Journey: React.FC = () => {
         };
     }, []);
 
-    // Animação de Overlay: Escurece levemente conforme desce
-    const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.4, 0.7]);
-
-    // Animação de Texto: Fade In/Up suave
-    const contentOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-    const contentY = useTransform(scrollYProgress, [0, 0.2], [50, 0]);
+    // Animação de Texto: Fade In/Up suave com scroll
+    const contentOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0.3]);
+    const contentY = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [60, 0, 0, -20]);
 
     return (
         <section
             id="jornada"
             ref={targetRef}
-            className="relative h-[220vh] bg-brand-black"
+            className="relative h-[180vh] bg-brand-black"
         >
             <div ref={containerRef} className="sticky top-0 h-screen h-[100dvh] w-full overflow-hidden flex items-center justify-center">
 
-                {/* 1. Background Layer */}
-                <motion.div
-                    className="absolute inset-0 w-full h-full z-0"
-                >
-                    <div className="absolute inset-0 bg-brand-black/20 z-10" />
+                {/* 1. Background Layer - Static, no zoom */}
+                <div className="absolute inset-0 w-full h-full z-0">
                     <img
                         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2600&auto=format&fit=crop"
                         alt="Mountain Journey"
@@ -129,52 +123,47 @@ const Journey: React.FC = () => {
                     <div
                         className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-300"
                         style={{
-                            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.1), transparent 40%)`
+                            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.08), transparent 40%)`
                         }}
                     />
-                </motion.div>
+                </div>
 
-                {/* 2. Atmosphere Overlay */}
-                <motion.div
-                    style={{ opacity: overlayOpacity }}
-                    className="absolute inset-0 bg-gradient-to-b from-brand-black/30 via-brand-black/60 to-brand-black z-10 pointer-events-none"
+                {/* 2. Atmosphere Overlay - Static */}
+                <div
+                    className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/60 to-brand-black z-10 pointer-events-none"
                 />
 
                 {/* 3. Grain Texture */}
                 <div className="absolute inset-0 z-10 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
                 {/* 4. Content Container */}
-                <div className="relative z-20 flex flex-col items-center justify-center p-6 text-center max-w-7xl mx-auto w-full">
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-10%" }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="flex flex-col items-center gap-16 md:gap-24 will-change-transform"
-                    >
+                <motion.div
+                    style={{ opacity: contentOpacity, y: contentY }}
+                    className="relative z-20 flex flex-col items-center justify-center px-6 pt-28 pb-12 text-center max-w-7xl mx-auto w-full h-full"
+                >
+                    <div className="flex flex-col items-center justify-center gap-12 md:gap-16 will-change-transform flex-1">
                         {/* Headline Principal */}
-                        <div className="flex flex-col items-center gap-10">
+                        <div className="flex flex-col items-center gap-6 md:gap-8">
                             <h2 className="text-5xl md:text-8xl font-serif text-white tracking-tighter leading-[0.9] drop-shadow-2xl text-center">
-                                {t('journey.headline')} <br />
-                                <span className="block mt-2 text-white/90">
-                                    {t('journey.subheadline')}
-                                </span>
+                                {t('journey.headline')}
                             </h2>
+                            <p className="text-5xl md:text-8xl font-serif text-white/85 tracking-tighter leading-[0.9] drop-shadow-2xl text-center">
+                                {t('journey.subheadline')}
+                            </p>
                         </div>
 
-                        <h3 className="text-xl md:text-4xl text-white/90 font-light leading-relaxed max-w-6xl text-center mx-auto">
+                        <h3 className="text-xl md:text-4xl text-white/80 font-light leading-relaxed max-w-5xl text-center mx-auto">
                             {t('journey.tagline.prefix')} <AnimatedWord /> {t('journey.tagline.suffix')}
                         </h3>
 
                         {/* CTA */}
-                        <div className="pt-8">
+                        <div className="pt-4">
                             <GlowingCTA />
                         </div>
 
-                    </motion.div>
+                    </div>
 
-                </div>
+                </motion.div>
 
             </div>
         </section>

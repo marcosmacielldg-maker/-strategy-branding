@@ -24,16 +24,16 @@ const LeadCapture: React.FC<LeadCaptureProps> = ({ onSubmit, loading }) => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white border border-gray-200 p-8 rounded-2xl shadow-xl"
+                className="bg-white border border-gray-200 p-6 md:p-8 rounded-2xl shadow-xl"
             >
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
                     Quase lá... 🏕️
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8">
                     Preencha seus dados para receber o diagnóstico completo da sua marca e descobrir os próximos passos da sua escalada.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                     <div>
                         <input
                             type="text"
@@ -41,7 +41,7 @@ const LeadCapture: React.FC<LeadCaptureProps> = ({ onSubmit, loading }) => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
-                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2.5 md:py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
                         />
                     </div>
                     <div>
@@ -51,7 +51,7 @@ const LeadCapture: React.FC<LeadCaptureProps> = ({ onSubmit, loading }) => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2.5 md:py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
                         />
                     </div>
                     <div>
@@ -61,14 +61,14 @@ const LeadCapture: React.FC<LeadCaptureProps> = ({ onSubmit, loading }) => {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             required
-                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2.5 md:py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-brand-green text-white font-bold py-4 rounded-lg hover:bg-emerald-600 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group shadow-lg shadow-brand-green/20"
+                        className="w-full bg-brand-green text-white font-bold py-3 md:py-4 rounded-lg hover:bg-emerald-600 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group shadow-lg shadow-brand-green/20 mt-2"
                     >
                         {loading ? (
                             <Loader2 className="animate-spin" />

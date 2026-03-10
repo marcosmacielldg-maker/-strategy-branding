@@ -13,7 +13,8 @@ module.exports = {
                     green: '#0c774e',
                     light: '#45f2a1',
                     black: '#050505',
-                    gray: '#f4f4f5'
+                    gray: '#f4f4f5',
+                    eixo: '#234d3a'
                 }
             },
             fontFamily: {
@@ -30,13 +31,13 @@ module.exports = {
             },
             keyframes: {
                 fadeIn: {
-                    opacity: '0'
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
                 },
-                '100%': { opacity: '1' },
-            },
-            reveal: {
-                'from': { opacity: '0', transform: 'translateY(10px)' },
-                'to': { opacity: '1', transform: 'translateY(0)' },
+                reveal: {
+                    '0%': { opacity: '0', transform: 'translateY(10px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                }
             }
         },
     },

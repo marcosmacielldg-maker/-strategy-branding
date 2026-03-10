@@ -130,6 +130,14 @@ const Navbar: React.FC = () => {
                             href="https://api.whatsapp.com/send?phone=5511948635387&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20Instagram!%20"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => {
+                                if (window.dataLayer) {
+                                    window.dataLayer.push({ event: 'gerou_lead', origin: 'navbar_whatsapp' });
+                                }
+                                if (window.fbq) {
+                                    window.fbq('track', 'Lead', { content_name: 'navbar_whatsapp' });
+                                }
+                            }}
                             className={`
                     w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer
                     ${isScrolled

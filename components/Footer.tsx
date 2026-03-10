@@ -42,6 +42,14 @@ const Footer: React.FC = () => {
             href="https://api.whatsapp.com/send?phone=5511948635387&text=Ol%C3%A1%2C%20vim%20pelo%20site%21"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (window.dataLayer) {
+                window.dataLayer.push({ event: 'gerou_lead', origin: 'footer_whatsapp' });
+              }
+              if (window.fbq) {
+                window.fbq('track', 'Lead', { content_name: 'footer_whatsapp' });
+              }
+            }}
             className="text-white/40 hover:text-brand-light transition-colors"
             aria-label="WhatsApp"
           >

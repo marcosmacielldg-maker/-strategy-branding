@@ -230,6 +230,14 @@ const ProjectDetail: React.FC = () => {
           href="https://api.whatsapp.com/send?phone=5511948635387&text=Ol%C3%A1%2C%20vim%20pelo%20site%21"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            if (window.dataLayer) {
+              window.dataLayer.push({ event: 'gerou_lead', origin: 'project_detail_whatsapp' });
+            }
+            if (window.fbq) {
+              window.fbq('track', 'Lead', { content_name: 'project_detail_whatsapp' });
+            }
+          }}
           className="pointer-events-auto flex items-center justify-center gap-4 px-12 py-4 bg-brand-green text-white rounded-full font-medium shadow-[0_10px_40px_rgba(12,119,78,0.6)] border border-white/10 backdrop-blur-md hover:bg-brand-light hover:text-brand-green hover:scale-105 transition-all duration-300 group min-w-[260px] max-w-[90vw]"
         >
           <span className="text-sm tracking-[0.15em] uppercase font-bold text-center">{t('project.start')}</span>

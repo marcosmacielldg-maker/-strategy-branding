@@ -13,6 +13,10 @@ const Home = React.lazy(() => import('./components/Home'));
 const ProjectDetail = React.lazy(() => import('./components/ProjectDetail'));
 const ServiceDetail = React.lazy(() => import('./components/ServiceDetail'));
 const DiagnosisWizard = React.lazy(() => import('./components/Diagnosis/DiagnosisWizard'));
+const DiagnosisExpressWizard = React.lazy(() => import('./components/Diagnosis/DiagnosisExpressWizard'));
+const LandingPVE = React.lazy(() => import('./components/LandingPVE'));
+const OnboardingTrafego = React.lazy(() => import('./components/OnboardingTrafego'));
+const SistemaEixo = React.lazy(() => import('./components/SistemaEixo'));
 import { Loader2 } from 'lucide-react';
 
 const PageLoader = () => (
@@ -44,6 +48,10 @@ const App: React.FC = () => {
 
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/diagnostico" element={<DiagnosisWizard />} />
+          <Route path="/diagnostico-express" element={<DiagnosisExpressWizard />} />
+          <Route path="/posicionamento-visual-estrategico" element={<LandingPVE />} />
+          <Route path="/onboarding-trafego" element={<OnboardingTrafego />} />
+          <Route path="/sistema-eixo" element={<SistemaEixo />} />
         </Routes>
       </React.Suspense>
 

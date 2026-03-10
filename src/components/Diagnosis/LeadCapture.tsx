@@ -15,6 +15,12 @@ const LeadCapture: React.FC<LeadCaptureProps> = ({ onSubmit, loading }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (name && email && phone) {
+            if (window.dataLayer) {
+                window.dataLayer.push({ event: 'gerou_lead', origin: 'diagnosis_form' });
+            }
+            if (window.fbq) {
+                window.fbq('track', 'Lead', { content_name: 'diagnosis_form' });
+            }
             onSubmit(name, email, phone);
         }
     };

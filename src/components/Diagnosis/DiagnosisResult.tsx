@@ -47,6 +47,14 @@ const DiagnosisResult: React.FC<DiagnosisResultProps> = ({ result }) => {
                         href={`https://api.whatsapp.com/send?phone=5511948635387&text=Olá! Fiz o diagnóstico de marca e meu resultado foi: ${result.title}. Gostaria de saber mais sobre como avançar.`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                            if (window.dataLayer) {
+                                window.dataLayer.push({ event: 'gerou_lead', origin: 'diagnosis_result_whatsapp' });
+                            }
+                            if (window.fbq) {
+                                window.fbq('track', 'Lead', { content_name: 'diagnosis_result_whatsapp' });
+                            }
+                        }}
                         className="flex items-center justify-center gap-2 bg-brand-green text-white font-bold py-4 px-10 rounded-full hover:bg-emerald-600 transition-all hover:scale-105 shadow-xl shadow-brand-green/20"
                     >
                         <MessageCircle className="w-5 h-5" />

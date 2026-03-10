@@ -47,6 +47,13 @@ const Contact: React.FC = () => {
       // Or we can check inside sendEmail.
       tasks.push(sendEmail(data));
 
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: 'gerou_lead', origin: 'contact_form' });
+      }
+      if (window.fbq) {
+        window.fbq('track', 'Lead', { content_name: 'contact_form' });
+      }
+
       await Promise.allSettled(tasks);
 
       // We consider success if at least one worked or just assume success to user.
@@ -218,6 +225,14 @@ const Contact: React.FC = () => {
                 href="https://api.whatsapp.com/send?phone=5511948635387&text=Ol%C3%A1%2C%20vim%20pelo%20site%21"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (window.dataLayer) {
+                    window.dataLayer.push({ event: 'gerou_lead', origin: 'contact_whatsapp' });
+                  }
+                  if (window.fbq) {
+                    window.fbq('track', 'Lead', { content_name: 'contact_whatsapp' });
+                  }
+                }}
                 className="w-full bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] font-medium text-lg py-4 rounded-xl hover:bg-[#25D366] hover:text-white transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <MessageCircle className="w-5 h-5" />

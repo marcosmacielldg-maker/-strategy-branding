@@ -84,17 +84,23 @@ const Methodology: React.FC = () => {
         {/* Header Layout */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
           <div>
-            <span className="block text-sm md:text-sm tracking-[0.2em] uppercase text-brand-black/50 mb-3 ml-1 text-left">
-              {t('method.title')}
+            <span className="block text-xs md:text-sm tracking-[0.2em] uppercase text-brand-black/40 mb-2 ml-1 text-left font-medium">
+              Metodologia
             </span>
-            <h2 className="font-serif text-[5rem] leading-[0.85] md:text-7xl lg:text-8xl tracking-tighter text-brand-black italic max-w-4xl text-left">
-              {t('method.subtitle')}
+            <h2 className="font-serif italic text-[5rem] leading-[0.85] md:text-7xl lg:text-8xl tracking-tighter text-brand-black max-w-4xl text-left uppercase">
+              RITMO
             </h2>
           </div>
-          <div className="max-w-md pb-2">
+          <div className="max-w-md pb-2 flex flex-col gap-3">
             <p className="text-brand-black/60 font-light leading-relaxed text-sm md:text-base text-justify md:text-left">
               {t('method.desc')}
             </p>
+            <div className="flex items-center gap-2 text-brand-green/80 text-xs font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+              </svg>
+              <span className="italic">Passe o mouse para descobrir</span>
+            </div>
           </div>
         </div>
 

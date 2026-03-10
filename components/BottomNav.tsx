@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import { Home, LayoutGrid, Compass, MessageCircle, Mountain } from 'lucide-react';
+import { Home, LayoutGrid, Compass, MessageCircle, ArrowLeft } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const BottomNav: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [activeTab, setActiveTab] = useState('home');
+
+    // Check if we are on a specialized page
+    const isSpecializedPage = location.pathname !== '/';
 
     // Initial check for hash
     useEffect(() => {
@@ -47,31 +50,53 @@ const BottomNav: React.FC = () => {
             `}
         >
             <div className="flex items-center gap-8 px-8 py-4 rounded-full bg-brand-black/90 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/40">
-                <button
-                    onClick={() => handleNavigation('#')}
-                    className={`flex items-center justify-center transition-all duration-300 ${activeTab === 'home' || activeTab === '#' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
-                >
-                    <Home className="w-6 h-6" />
-                </button>
-                <button
-                    onClick={() => handleNavigation('#solucoes')}
-                    className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#solucoes' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
-                >
-                    <LayoutGrid className="w-6 h-6" />
-                </button>
+                {isSpecializedPage ? (
+                    <>
+                        <button
+                            onClick={() => navigate(-1)}
+                            className="flex items-center justify-center transition-all duration-300 text-white/50 hover:text-white"
+                        >
+                            <ArrowLeft className="w-6 h-6" />
+                        </button>
+                        <button
+                            onClick={() => {
+                                navigate('/');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                            className={`flex items-center justify-center transition-all duration-300 ${activeTab === 'home' || activeTab === '#' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
+                        >
+                            <Home className="w-6 h-6" />
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <button
+                            onClick={() => handleNavigation('#')}
+                            className={`flex items-center justify-center transition-all duration-300 ${activeTab === 'home' || activeTab === '#' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
+                        >
+                            <Home className="w-6 h-6" />
+                        </button>
+                        <button
+                            onClick={() => handleNavigation('#solucoes')}
+                            className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#solucoes' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
+                        >
+                            <LayoutGrid className="w-6 h-6" />
+                        </button>
 
-                <button
-                    onClick={() => handleNavigation('#metodologia')}
-                    className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#metodologia' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
-                >
-                    <Compass className="w-6 h-6" />
-                </button>
-                <button
-                    onClick={() => handleNavigation('#contato')}
-                    className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#contato' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
-                >
-                    <MessageCircle className="w-6 h-6" />
-                </button>
+                        <button
+                            onClick={() => handleNavigation('#metodologia')}
+                            className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#metodologia' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
+                        >
+                            <Compass className="w-6 h-6" />
+                        </button>
+                        <button
+                            onClick={() => handleNavigation('#contato')}
+                            className={`flex items-center justify-center transition-all duration-300 ${activeTab === '#contato' ? 'text-brand-green scale-110' : 'text-white/50 hover:text-white'}`}
+                        >
+                            <MessageCircle className="w-6 h-6" />
+                        </button>
+                    </>
+                )}
             </div>
         </div>
     );
