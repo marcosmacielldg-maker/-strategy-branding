@@ -1,66 +1,72 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { Hexagon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+
+/* ═══════════════════════════════════════════════
+   NAVBAR — IL Flutuante / Pill-shaped
+   Transparente no topo → vidro branco ao rolar
+═══════════════════════════════════════════════ */
 
 const Navbar: React.FC = () => {
-    const navRef = useRef<HTMLElement>(null);
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 100) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(navRef.current, {
-                y: -20,
-                opacity: 0,
-                duration: 1,
-                ease: 'power3.out',
-                delay: 0.5
-            });
-        });
-        return () => ctx.revert();
+        const onScroll = () => setScrolled(window.scrollY > 80);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
-        <header
-            ref={navRef}
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] px-6 md:px-12 py-5 flex items-center justify-between
-      ${isScrolled ? 'bg-[#111]/95 backdrop-blur-xl border-b border-white/10' : 'bg-transparent border-b border-white/5'}`}
+        <motion.header
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed top-0 left-0 w-full z-50 px-5 py-4 flex items-center justify-between"
         >
-            <div className="flex items-center">
+            {/* Pill Nav Container */}
+            <div className={`
+                w-full max-w-5xl mx-auto flex items-center justify-between
+                px-5 py-3 rounded-full transition-all duration-500
+                ${scrolled
+                    ? 'bg-white/60 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
+                    : 'bg-transparent border border-transparent'
+                }
+            `}>
+                {/* Logo */}
                 <img
-                    src="/logo-eixo-claro.svg"
-                    alt="Sistema Eixo"
-                    className="h-6 md:h-8 w-auto"
+                    src={scrolled ? '/logo-oficial-preto.svg' : '/logo-oficial-preto.svg'}
+                    alt="Sistema EIXO™"
+                    className="h-6 md:h-7 w-auto transition-opacity duration-300"
                 />
-            </div>
 
-            <nav className="hidden md:flex items-center gap-10 text-white/70 font-sans text-xs uppercase tracking-widest font-medium">
-                <a href="#features" className="transition-colors duration-300 hover:text-[#45f2a1]">A Solução</a>
-                <a href="#protocol" className="transition-colors duration-300 hover:text-[#45f2a1]">O Método</a>
-                <a href="#pricing" className="transition-colors duration-300 hover:text-[#45f2a1]">O Investimento</a>
-            </nav>
+                {/* Nav Links */}
+                <nav className="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-widest font-medium">
+                    {[
+                        { href: '#features', label: 'A Solução' },
+                        { href: '#protocol', label: 'O Método' },
+                        { href: '#pricing', label: 'Investimento' },
+                    ].map(link => (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            className={`transition-colors duration-300 hover:text-brand-green ${scrolled ? 'text-[#333]' : 'text-[#444]'}`}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                </nav>
 
-            <div className="flex items-center">
-                <a href="https://wa.me/5511999999999?text=Olá%20Marcos%2C%20quero%20solicitar%20uma%20proposta%20para%20o%20Sistema%20EIXO"
-                    target="_blank" rel="noopener noreferrer"
-                    className="group relative overflow-hidden bg-white/5 border border-white/10 text-white px-6 py-2.5 font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:border-[#45f2a1]/50">
-                    <span className="absolute inset-0 w-full h-full bg-[#45f2a1] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" />
-                    <span className="relative z-10 group-hover:text-[#111] transition-colors duration-300">Solicitar Proposta</span>
+                {/* CTA */}
+                <a
+                    href="https://wa.me/5511999999999?text=Olá%20Marcos%2C%20quero%20solicitar%20uma%20proposta%20para%20o%20Sistema%20EIXO"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-green text-white text-xs font-semibold rounded-full transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_4px_16px_rgba(12,119,78,0.2)]"
+                >
+                    <div className="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                    <span className="relative z-10">Solicitar Proposta</span>
                 </a>
             </div>
-        </header>
+        </motion.header>
     );
 };
 

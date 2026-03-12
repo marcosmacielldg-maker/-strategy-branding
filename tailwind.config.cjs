@@ -28,6 +28,8 @@ module.exports = {
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out forwards',
                 'reveal': 'reveal 1s ease-out forwards',
+                'marquee': 'marquee var(--duration, 40s) infinite linear',
+                'marquee-vertical': 'marquee-vertical var(--duration, 40s) infinite linear',
             },
             keyframes: {
                 fadeIn: {
@@ -37,6 +39,14 @@ module.exports = {
                 reveal: {
                     '0%': { opacity: '0', transform: 'translateY(10px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                marquee: {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+                },
+                'marquee-vertical': {
+                    from: { transform: 'translateY(0)' },
+                    to: { transform: 'translateY(calc(-100% - var(--gap)))' }
                 }
             }
         },

@@ -1,90 +1,114 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+/* ═══════════════════════════════════════════════
+   DEPOIMENTOS — Split Layout
+   Baseado na nova referência: lado esquerdo verde
+   com os depoimentos, lado direito imagem grande
+═══════════════════════════════════════════════ */
+
+const depoimentos = [
+    {
+        text: 'A YW Lab Studio tomou forma, cores e personalidade pelas mãos do Marcos. O processo criativo foi leve e intenso. Somos muito felizes pelo resultado final que ecoa e ecoará por muitos anos. Somos muito gratos pelo olhar minucioso e apresentação excelente.',
+        author: 'Pamela Liz',
+        role: 'CEO da YW Lab Studio',
+        logoText: 'yw lab',
+        initial: 'Y',
+        active: false,
+    },
+    {
+        text: 'Marcos, seu trabalho é excepcional. Você conseguiu transformar nossas conversas e ideias em algo concreto, capturando com precisão a essência da marca. Não apenas trouxe o que debatemos, mas foi além. Num mundo onde muitos fazem o mínimo, você entrega. Isso inspira.',
+        author: 'Patrícia',
+        role: 'CEO da Persist',
+        logoText: 'persist',
+        initial: 'P',
+        active: true, // Card de destaque da imagem de ref
+    },
+];
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+};
+
 const Depoimentos: React.FC = () => {
-    const fadeUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0 }
-    };
-
-    const depoimentos = [
-        {
-            text: "Seu trabalho é excepcional. Você conseguiu transformar nossas conversas e ideias em algo concreto, capturando com precisão a essência da marca. Mais do que técnica, você entregou presença, dedicação e aquele algo a mais que poucos oferecem.",
-            author: "Patrícia Alburque",
-            role: "CEO — Persist",
-            initial: "P"
-        },
-        {
-            text: "Realmente ficou muito bom. A questão de cores funcionou de uma forma indescritível e o encaixe das letras ficou perfeito. Vocês sempre entregam mais do que eu esperava. Ficou maravilhoso.",
-            author: "Bárbara Santos",
-            role: "CEO — Braem",
-            initial: "B"
-        },
-        {
-            text: "O cuidado em cada detalhe, a atenção e o capricho no design fizeram uma diferença enorme. Tenho recebido elogios de clientes justamente sobre o visual — isso mostra como o seu trabalho agrega valor de verdade.",
-            author: "Flávio",
-            role: "CEO — Solique",
-            initial: "F"
-        }
-    ];
-
     return (
-        <section className="py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-white relative overflow-hidden border-b border-black/[0.06]">
+        <section className="py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-[#fafafa]">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
 
-            <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-16 md:mb-20 text-center flex flex-col items-center"
-                >
-                    <div className="inline-flex items-center gap-3 mb-6">
-                        <span className="text-[#45f2a1] font-semibold tracking-widest uppercase text-sm font-sans">Resultados Reais</span>
-                    </div>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.1] text-[#111] tracking-tight max-w-2xl mx-auto">
-                        Marcas que transformaram <span className="italic font-light bg-gradient-to-r from-[#45f2a1] to-[#0c774e] bg-clip-text text-transparent">percepção</span> em resultados concretos.
-                    </h2>
-                </motion.div>
+                    {/* Lado Esquerdo — Fundo Verde */}
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="bg-[#1a5b3f] rounded-[2rem] p-8 md:p-12 lg:p-14 flex flex-col justify-between hide-scrollbar"
+                    >
+                        {/* Header Local */}
+                        <div className="mb-12">
+                            <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-medium text-white leading-[1.2] tracking-[-0.02em]">
+                                Trabalho com marcas que querem mais do que estética.
+                                <br />
+                                <em className="font-serif italic font-normal text-brand-green/90">
+                                    Crio Marcas
+                                </em>{' '}
+                                com direção, clareza e propósito real.
+                            </h2>
+                        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                    {depoimentos.map((depo, i) => (
-                        <motion.div
-                            key={i}
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: i * 0.1 }}
-                            className="bg-[#fafafa] border border-black/[0.06] rounded-2xl p-8 lg:p-10 relative flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-[#45f2a1]/30 transition-all duration-500 group"
-                        >
-                            {/* Decorative Quote Mark */}
-                            <span className="absolute top-6 right-8 font-serif text-6xl md:text-8xl text-black/[0.03] group-hover:text-[#45f2a1]/10 transition-colors duration-500 font-black select-none pointer-events-none leading-none">
-                                "
-                            </span>
+                        {/* Lista de Depoimentos */}
+                        <div className="flex flex-col gap-4">
+                            {depoimentos.map((dep, i) => (
+                                <div
+                                    key={i}
+                                    className={`rounded-2xl p-6 md:p-8 flex flex-col transition-all duration-300 ${dep.active
+                                            ? 'bg-white/10 border border-white/20' // Destaque suave como na ref
+                                            : 'bg-transparent border border-white/[0.15] hover:bg-white/5'
+                                        }`}
+                                >
+                                    {/* Author row */}
+                                    <div className="flex items-center gap-4 mb-5">
+                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${dep.active ? 'bg-[#ff6b4a] text-white' : 'bg-[#f4d03f] text-[#111]'
+                                            }`}>
+                                            {dep.initial}
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-medium text-[15px]">{dep.author} <span className="text-white/60 font-light">— {dep.role}</span></p>
+                                        </div>
+                                    </div>
 
-                            <div>
-                                <p className="font-sans text-sm md:text-base font-light text-[#555] leading-relaxed italic mb-10 mt-6 relative z-10">
-                                    "{depo.text}"
-                                </p>
-                            </div>
-
-                            <div className="flex items-center gap-4 mt-auto pt-6 border-t border-black/[0.04] relative z-10">
-                                <div className="w-12 h-12 rounded-full bg-white border border-black/[0.06] flex items-center justify-center font-serif text-xl font-bold text-[#111] group-hover:text-[#0c774e] group-hover:bg-[#45f2a1]/10 flex-shrink-0 transition-colors duration-500 shadow-sm">
-                                    {depo.initial}
+                                    {/* Text */}
+                                    <p className="text-white/80 font-light leading-relaxed text-sm md:text-[15px]">
+                                        {dep.text}
+                                    </p>
                                 </div>
-                                <div>
-                                    <strong className="block font-sans text-sm md:text-base font-bold text-[#111]">
-                                        {depo.author}
-                                    </strong>
-                                    <span className="block font-sans text-xs uppercase tracking-widest text-[#999] mt-1 pr-2">
-                                        {depo.role}
-                                    </span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Lado Direito — Foto Desktop/Lifestyle */}
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative rounded-[2rem] overflow-hidden min-h-[400px] lg:min-h-full"
+                    >
+                        {/* Usando a foto do dono da agência trabalhando (referência) */}
+                        <img
+                            src="/assets/74.png"
+                            alt="Marcos - Estratégia e Branding"
+                            className="absolute inset-0 w-full h-full object-cover object-center bg-[#eee]"
+                            onError={(e) => {
+                                // Fallback se a 74 não existir ou quebrar
+                                (e.target as HTMLImageElement).src = '/assets/IMG_1180.JPG';
+                            }}
+                        />
+                    </motion.div>
+
                 </div>
             </div>
         </section>

@@ -6,6 +6,7 @@ import Hero from './Hero';
 import Dor from './Dor';
 import Solucao from './Solucao';
 import Metodo from './Metodo';
+import MetodoRitmo from './MetodoRitmo';
 import Entregaveis from './Entregaveis';
 import Depoimentos from './Depoimentos';
 import Preco from './Preco';
@@ -27,6 +28,7 @@ const SistemaEixo: React.FC = () => {
             <Dor />
             <Solucao />
             <Metodo />
+            <MetodoRitmo />
             <Entregaveis />
             <Depoimentos />
             <Preco />

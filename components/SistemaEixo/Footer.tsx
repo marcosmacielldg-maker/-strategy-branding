@@ -7,11 +7,8 @@ const Footer: React.FC = () => {
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
 
                 <div>
-                    <div className="flex items-center gap-2 mb-6">
-                        <Hexagon className="w-8 h-8 text-[#45f2a1]" />
-                        <span className="font-sans font-bold tracking-tight text-white text-2xl">
-                            Sistema <span className="font-serif italic text-[#45f2a1]">EIXO™</span>
-                        </span>
+                    <div className="mb-6">
+                        <img src="/logo-eixo-claro.svg" alt="Sistema EIXO Oficial" className="h-8 md:h-10 w-auto" />
                     </div>
                     <p className="text-white/60 font-sans max-w-sm mb-12">
                         A espinha dorsal comercial da sua empresa. Elimine o amadorismo visual e atraia vendas premium.
