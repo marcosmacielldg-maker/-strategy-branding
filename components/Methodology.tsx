@@ -47,7 +47,7 @@ const Methodology: React.FC = () => {
       textColor: 'text-white',
       subtitleColor: 'text-white/60',
       descriptionColor: 'text-white/90',
-      image: '/assets/ritmo/território.webp'
+      image: '/assets/ritmo/territorio.webp'
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ const Methodology: React.FC = () => {
       textColor: 'text-white',
       subtitleColor: 'text-white/60',
       descriptionColor: 'text-white/90',
-      image: '/assets/ritmo/materialização.webp'
+      image: '/assets/ritmo/materializacao.webp'
     },
     {
       id: 4,
@@ -73,7 +73,7 @@ const Methodology: React.FC = () => {
       textColor: 'text-white',
       subtitleColor: 'text-white/60',
       descriptionColor: 'text-white/90',
-      image: '/assets/ritmo/orquestração.webp'
+      image: '/assets/ritmo/orquestracao.webp'
     }
   ];
 
