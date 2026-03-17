@@ -138,7 +138,7 @@ const DiagnosisExpressWizard: React.FC = () => {
             const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_EXPRESS_ID || EMAILJS_TEMPLATE_DIAGNOSIS_ID;
 
             const tasks: Promise<any>[] = [
-                sendToGoogleSheets('https://script.google.com/macros/s/AKfycby5zzz2CH8BamW34bLD3CbGbWTeNocRp4HYfFxGfCI7GHfBAM5MjKCHtluz88-jPeH3/exec', data),
+                sendToGoogleSheets('https://script.google.com/macros/s/AKfycbziC0dic4FQDlnfMUZ2jve-D6aaNR61n7ftvBo0qehbwfYNFxbh_MG9qaFp0NUONQQn/exec', data),
                 sendToWebhook(WEBHOOK_DIAGNOSIS, data)
             ];
 
