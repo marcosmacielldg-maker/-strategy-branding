@@ -86,7 +86,7 @@ const Pricing: React.FC = () => {
                     {/* Column 3: Photo & Price Stack */}
                     <div className="bento-pricing col-span-1 flex flex-col gap-4 h-full">
                         <div className="flex-1 rounded-xl overflow-hidden shadow-lg relative min-h-[200px]">
-                            <img src="/assets/marcos.jpg" alt="Marcos Maciel" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1620608553531-df243eec3854?q=80&w=800&auto=format&fit=crop" }} />
+                            <img src="/assets/marcos.webp" alt="Marcos Maciel" className="w-full h-full object-cover" loading="lazy" width="400" height="500" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1620608553531-df243eec3854?q=80&w=800&auto=format&fit=crop" }} />
                         </div>
                         <div className="flex-[1.2] bg-[#2a2a2a] text-white rounded-xl p-6 shadow-lg flex flex-col justify-center">
                             <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-1 line-through decoration-white/30 decoration-[2px]">

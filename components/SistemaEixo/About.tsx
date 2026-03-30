@@ -76,17 +76,17 @@ const About: React.FC = () => {
                             <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover" alt="Brand b" />
                         </div>
                         <div className="bg-[#111] rounded-lg overflow-hidden relative">
-                            <img src="/assets/solvia-eng.jpg" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1541888081604-006ee788debf?q=80&w=800&auto=format&fit=crop" }} alt="Solvia" />
+                            <img src="/assets/solvia-eng.webp" className="w-full h-full object-cover" loading="lazy" width="400" height="300" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1541888081604-006ee788debf?q=80&w=800&auto=format&fit=crop" }} alt="Solvia" />
                         </div>
                     </div>
 
                     {/* Persist Center */}
                     <div className="bento-item col-span-2 row-span-1 grid grid-cols-3 gap-1 md:gap-2">
                         <div className="bg-orange-600 rounded-lg overflow-hidden">
-                            <img src="/assets/persist.jpg" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=800&auto=format&fit=crop" }} alt="Persist" />
+                            <img src="/assets/persist.webp" className="w-full h-full object-cover" loading="lazy" width="400" height="300" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=800&auto=format&fit=crop" }} alt="Persist" />
                         </div>
                         <div className="bg-zinc-800 rounded-lg overflow-hidden">
-                            <img src="/assets/marcos.jpg" className="w-full h-full object-cover grayscale opacity-80" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1620608553531-df243eec3854?q=80&w=800&auto=format&fit=crop" }} alt="Marcos" />
+                            <img src="/assets/marcos.webp" className="w-full h-full object-cover grayscale opacity-80" loading="lazy" width="400" height="300" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1620608553531-df243eec3854?q=80&w=800&auto=format&fit=crop" }} alt="Marcos" />
                         </div>
                         <div className="bg-[#051124] rounded-lg overflow-hidden flex items-center justify-center p-4">
                             {/* Abstract tech logo */}
@@ -109,7 +109,7 @@ const About: React.FC = () => {
                             </svg>
                         </div>
                         <div className="bg-blue-600 rounded-lg overflow-hidden">
-                            <img src="/assets/braem.jpg" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" }} alt="Braem" />
+                            <img src="/assets/braem.webp" className="w-full h-full object-cover" loading="lazy" width="400" height="300" onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" }} alt="Braem" />
                         </div>
                     </div>
                 </div>

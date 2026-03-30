@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const DiagnosisCTA: React.FC = () => {
     return (
-        <section className="bg-white pb-24 pt-16 px-4">
+        <section id="diagnostico-cta" className="bg-white pb-24 pt-16 px-4">
             <div className="container mx-auto">
                 <div className="max-w-7xl mx-auto rounded-3xl overflow-hidden relative shadow-2xl shadow-slate-900/20 h-[500px] md:h-[600px] group">
 

@@ -99,12 +99,15 @@ const Depoimentos: React.FC = () => {
                     >
                         {/* Usando a foto do dono da agência trabalhando (referência) */}
                         <img
-                            src="/assets/74.png"
+                            src="/assets/74.webp"
                             alt="Marcos - Estratégia e Branding"
                             className="absolute inset-0 w-full h-full object-cover object-center bg-[#eee]"
+                            loading="lazy"
+                            width="800"
+                            height="1000"
                             onError={(e) => {
                                 // Fallback se a 74 não existir ou quebrar
-                                (e.target as HTMLImageElement).src = '/assets/IMG_1180.JPG';
+                                (e.target as HTMLImageElement).src = '/assets/IMG_1180.webp';
                             }}
                         />
                     </motion.div>

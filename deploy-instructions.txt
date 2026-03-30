@@ -1,0 +1,8 @@
+Passo 1: Copiar o valor de AAAA da Vercel (2600:1901:0:84ef::)
+Passo 2: Ir na Hostinger na seção de DNS
+Passo 3: Adicionar um novo registro
+Tipo: AAAA
+Nome: @
+Aponta para: 2600:1901:0:84ef::
+TTL: 14400
+Clicar em Adicionar

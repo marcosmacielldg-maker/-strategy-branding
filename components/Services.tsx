@@ -65,6 +65,7 @@ const Services: React.FC = () => {
                                     key={item.id}
                                     onMouseEnter={() => setHoveredId(item.id)}
                                     onMouseLeave={() => setHoveredId(null)}
+                                    onClick={() => setHoveredId(isHovered ? null : item.id)}
                                     layout
                                     className={`
                         relative overflow-hidden rounded-xl cursor-pointer w-full
@@ -92,8 +93,15 @@ const Services: React.FC = () => {
                                 ${isHovered ? 'bg-brand-green border-brand-green lg:rotate-0' : 'bg-transparent border-brand-black/5'}
                             `}>
                                             {/* Consistent Icon for Link */}
-                                            {/* Changed to Plus/Minus or just Chevron, keeping Chevron for now as it indicates expansion */}
-                                            <ChevronRight className={`w-5 h-5 transition-colors duration-300 ${isHovered ? 'text-white' : 'text-brand-black/30'}`} />
+                                            <div className="hidden md:block">
+                                                <ChevronRight className={`w-5 h-5 transition-colors duration-300 ${isHovered ? 'text-white' : 'text-brand-black/30'}`} />
+                                            </div>
+                                            <div className="md:block hidden">
+                                                {/* Fallback to override if needed, replaced by logic above */}
+                                            </div>
+                                            <div className="md:hidden block">
+                                                <MousePointerClick className={`w-5 h-5 transition-colors duration-300 animate-pulse ${isHovered ? 'text-white' : 'text-brand-green'}`} />
+                                            </div>
                                         </div>
                                     </div>
 
